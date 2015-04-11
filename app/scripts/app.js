@@ -19,8 +19,10 @@ var app = angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'firebase'
   ])
+  .constant('FIREBASE_URL', 'https://luminous-fire-3416.firebaseio.com/')
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
