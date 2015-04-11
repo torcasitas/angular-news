@@ -11,6 +11,7 @@ app.factory('Post', function($firebaseArray, FIREBASE_URL) {
       return posts.$add(post);
     },
     get: function (postId) {
+      // return $firebaseArray(postsRef).$getRecord(postId);
       return posts.$getRecord(postId);
     },
     delete: function(postId) {
