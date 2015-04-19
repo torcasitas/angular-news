@@ -4,8 +4,13 @@ app.factory('Post', function($firebaseArray, FIREBASE_URL) {
   //var ref = new Firebase(FIREBASE_URL);
   var postsRef = new Firebase(FIREBASE_URL + 'posts');
   var posts = $firebaseArray(postsRef);
+  var Post;
 
-  var Post = {
+  posts.$loaded().then(function(data) { 
+    posts = data;
+  });
+
+  Post = {
     all: posts,
     create: function (post) {
       return posts.$add(post);
@@ -18,6 +23,9 @@ app.factory('Post', function($firebaseArray, FIREBASE_URL) {
       return posts.$remove(postId);
     }
   }
-
   return Post;
+
+
+
+  //return Post;
 });

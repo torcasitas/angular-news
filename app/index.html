@@ -20,40 +20,12 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="header">
-      <div class="navbar navbar-default" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-
-            <a class="navbar-brand" href="#/">angularRealtimeAppsThinkster</a>
-          </div>
-
-          <div class="collapse navbar-collapse" id="js-navbar-collapse">
-
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Home</a></li>
-              <li><a ng-href="#/about">About</a></li>
-              <li><a ng-href="#/">Contact</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="container">
-    <div ng-view=""></div>
-    </div>
+    <div ng-include="'views/nav.html'"></div>
+    <div class="container" ng-view=""></div>
 
     <div class="footer">
       <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
+        <p><span class="glyphicon glyphicon-glass"></span> Jaibol </p>
       </div>
     </div>
 
@@ -82,6 +54,7 @@
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/firebase/firebase.js"></script>
     <script src="bower_components/angularfire/dist/angularfire.js"></script>
+    <script src="https://cdn.firebase.com/js/simple-login/1.6.4/firebase-simple-login.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -89,7 +62,11 @@
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/postview.js"></script>
         <script src="scripts/controllers/posts.js"></script>
+        <script src="scripts/controllers/nav.js"></script>
+        <script src="scripts/controllers/auth.js"></script>
         <script src="scripts/services/post.js"></script>
+        <script src="scripts/services/auth.js"></script>
+        <script src="scripts/filters/url.js"></script>
         <!-- endbuild -->
 </body>
 </html>
