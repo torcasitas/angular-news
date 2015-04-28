@@ -1,6 +1,6 @@
 'use strict';
 
-app.factory('Post', function($firebaseArray, FIREBASE_URL) {
+app.factory('Post', function($firebaseArray, $firebaseObject, $q, FIREBASE_URL) {
   //var ref = new Firebase(FIREBASE_URL);
   var postsRef = new Firebase(FIREBASE_URL + 'posts');
   var posts = $firebaseArray(postsRef);
@@ -16,8 +16,18 @@ app.factory('Post', function($firebaseArray, FIREBASE_URL) {
       return posts.$add(post);
     },
     get: function (postId) {
-      // return $firebaseArray(postsRef).$getRecord(postId);
-      return posts.$getRecord(postId);
+      if (posts.length > 0) {
+        var deferred = $q.defer();
+        var post = posts.$getRecord(postId);
+        deferred.resolve(post);
+
+        return deferred.promise;
+      } else {
+        var postRef = new Firebase(postsRef + '/' + postId);
+        var postObj = $firebaseObject(postRef);
+
+        return postObj.$loaded();
+      }
     },
     delete: function(postId) {
       return posts.$remove(postId);
