@@ -1,12 +1,24 @@
 'use strict';
 
-app.factory('Auth', function ($firebaseAuth, FIREBASE_URL, $rootScope) {
+app.factory('Auth', function ($firebaseAuth, $firebaseObject,  md5, FIREBASE_URL, $rootScope) {
   var ref = new Firebase(FIREBASE_URL);
   var auth = $firebaseAuth(ref);
 
   var Auth = {
     register: function (user) {
       return auth.$createUser(user);
+    },
+
+    createProfile: function (user) {
+      var profile = {
+        username: user.username,
+        md5_hash: md5.createHash(user.username || '')
+      };
+
+      var profileRef = $firebaseObject(ref.child('profile'));
+      profileRef.$value = user.uid;
+      profileRef.user = profile;
+      return profileRef.$save();
     },
 
     login: function (user) {

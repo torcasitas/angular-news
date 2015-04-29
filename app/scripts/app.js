@@ -14,6 +14,7 @@
 
 var app = angular
   .module('angPollApp', [
+    'angular-md5',
     'ngAnimate',
     'ngCookies',
     'ngResource',
