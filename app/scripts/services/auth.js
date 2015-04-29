@@ -38,10 +38,13 @@ app.factory('Auth', function ($firebaseAuth, $firebaseObject,  md5, FIREBASE_URL
     user: {}
   };
 
-  $rootScope.$on('$firebaseAuth:onAuth', function (authData) {
+  auth.$onAuth(function(authData) {
     if (authData) {
       console.log('logged in ');
       angular.copy(authData, Auth.user);
+      Auth.user.profile = $firebaseObject(ref.child('profile').child(Auth.user.uid));
+
+      console.log('Auth.user '+ Auth.user);
     } else {
       console.log('logged out');
       angular.copy({}, Auth.user);
