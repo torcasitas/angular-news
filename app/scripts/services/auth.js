@@ -15,9 +15,8 @@ app.factory('Auth', function ($firebaseAuth, $firebaseObject,  md5, FIREBASE_URL
         md5_hash: md5.createHash(user.username || '')
       };
 
-      var profileRef = $firebaseObject(ref.child('profile'));
-      profileRef.$value = user.uid;
-      profileRef.user = profile;
+      var profileRef = $firebaseObject(ref.child('profile').child(user.uid));
+      profileRef.$value = profile;
       return profileRef.$save();
     },
 
