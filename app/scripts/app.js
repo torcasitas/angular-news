@@ -28,7 +28,12 @@ var app = angular
     $routeProvider
       .when('/', {
         templateUrl: 'views/posts.html',
-        controller: 'PostsCtrl'
+        controller: 'PostsCtrl',
+        resolve: {
+          currentAuth: ["Auth", function(Auth) {
+            return Auth.waitForAuth();
+          }]
+        }
       })
       .when('/posts/:postId', {
         templateUrl: 'views/showpost.html',

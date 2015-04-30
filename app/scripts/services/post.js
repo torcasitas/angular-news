@@ -1,6 +1,6 @@
 'use strict';
 
-app.factory('Post', function($firebaseArray, $firebaseObject, $q, FIREBASE_URL) {
+app.factory('Post', function ($firebaseArray, $firebaseObject, $q, FIREBASE_URL) {
   //var ref = new Firebase(FIREBASE_URL);
   var postsRef = new Firebase(FIREBASE_URL + 'posts');
   var posts = $firebaseArray(postsRef);
@@ -32,7 +32,8 @@ app.factory('Post', function($firebaseArray, $firebaseObject, $q, FIREBASE_URL) 
     delete: function(postId) {
       return posts.$remove(postId);
     }
-  }
+  };
+
   return Post;
 
 

@@ -33,7 +33,12 @@ app.factory('Auth', function ($firebaseAuth, $firebaseObject,  md5, FIREBASE_URL
     },
 
     signedIn: function() {
+      //console.log('signedIn ' + !!Auth.user.provider);
       return !!Auth.user.provider;
+    },
+
+    waitForAuth: function() {
+      return auth.$waitForAuth();
     },
     user: {}
   };
@@ -43,11 +48,16 @@ app.factory('Auth', function ($firebaseAuth, $firebaseObject,  md5, FIREBASE_URL
       console.log('logged in ');
       angular.copy(authData, Auth.user);
       Auth.user.profile = $firebaseObject(ref.child('profile').child(Auth.user.uid));
+      console.dir(Auth.user);
 
-      console.log('Auth.user '+ Auth.user);
     } else {
       console.log('logged out');
+      if (Auth.user && Auth.user.profile) {
+        Auth.user.profile.$destroy();
+      }
+
       angular.copy({}, Auth.user);
+      console.dir(Auth.user);
     }
   });
 
