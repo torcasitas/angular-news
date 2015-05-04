@@ -24,13 +24,13 @@ var app = angular
     'firebase'
   ])
   .constant('FIREBASE_URL', 'https://luminous-fire-3416.firebaseio.com/')
-  .config(function ($routeProvider) {
+  .config(function($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/posts.html',
         controller: 'PostsCtrl',
         resolve: {
-          currentAuth: ["Auth", function(Auth) {
+          currentAuth: ['Auth', function(Auth) {
             return Auth.waitForAuth();
           }]
         }

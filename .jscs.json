@@ -1,0 +1,90 @@
+{
+  "excludeFiles": [
+    "bower_components/**",
+    "dist/**",
+    "node_modules/**",
+    "server/**",
+    "tests/fixtures/**",
+    "tmp/**",
+    "vendor/**"
+  ],
+  "fileExtensions": [".js"],
+  "esnext": true,
+
+  "requireSpaceBeforeKeywords": [
+    "else"
+  ],
+  "requireSpaceAfterKeywords": [
+    "do",
+    "for",
+    "if",
+    "else",
+    "switch",
+    "case",
+    "try",
+    "catch",
+    "void",
+    "while",
+    "with",
+    "return",
+    "typeof"
+  ],
+  "requireSpaceBeforeBlockStatements": true,
+  "requireSpacesInFunctionExpression": {
+    "beforeOpeningCurlyBrace": true
+  },
+  "disallowSpacesInFunctionExpression": {
+    "beforeOpeningRoundBrace": true
+  },
+  "disallowSpacesInCallExpression": true,
+  "disallowMultipleVarDecl": "exceptUndefined",
+  "requireBlocksOnNewline": true,
+  "disallowPaddingNewlinesInBlocks": true,
+  "disallowSpacesInsideParentheses": true,
+  "requireSpacesInsideObjectBrackets": "allButNested",
+  "disallowQuotedKeysInObjects": true,
+  "disallowSpaceAfterObjectKeys": true,
+  "requireSpaceBeforeObjectValues": true,
+  "requireCommaBeforeLineBreak": true,
+  "disallowSpaceAfterPrefixUnaryOperators": ["++", "--", "+", "-", "~", "!"],
+  "disallowSpaceBeforePostfixUnaryOperators": ["++", "--"],
+  "requireSpaceBeforeBinaryOperators": [
+    "=",
+    "+",
+    "-",
+    "/",
+    "*",
+    "==",
+    "===",
+    "!=",
+    "!=="
+  ],
+  "requireSpaceAfterBinaryOperators": [
+    "=",
+    ",",
+    "+",
+    "-",
+    "/",
+    "*",
+    "==",
+    "===",
+    "!=",
+    "!=="
+  ],
+  "disallowImplicitTypeConversion": ["numeric", "binary", "string"],
+  "requireCamelCaseOrUpperCaseIdentifiers": "ignoreProperties",
+  "disallowKeywords": ["with"],
+  "disallowMultipleLineBreaks": true,
+  "disallowMixedSpacesAndTabs": true,
+  "disallowTrailingWhitespace": true,
+  "disallowTrailingComma": true,
+  "disallowKeywordsOnNewLine": ["else"],
+  "requireCapitalizedConstructors": true,
+  "requireDotNotation": true,
+  "disallowYodaConditions": true,
+  "requireSpaceAfterLineComment": { "allExcept": ["="] },
+  "disallowFunctionDeclarations": true,
+  "disallowNewlineBeforeBlockStatements": true,
+  "validateQuoteMarks": { "mark": "'", "escape": true },
+  "validateParameterSeparator": ", "
+}

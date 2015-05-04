@@ -1,21 +1,20 @@
 'use strict';
 
-app.factory('Post', function ($firebaseArray, $firebaseObject, $q, FIREBASE_URL) {
-  //var ref = new Firebase(FIREBASE_URL);
+app.factory('Post', function($firebaseArray, $firebaseObject, $q, FIREBASE_URL) {
   var postsRef = new Firebase(FIREBASE_URL + 'posts');
   var posts = $firebaseArray(postsRef);
   var Post;
 
-  posts.$loaded().then(function(data) { 
+  posts.$loaded().then(function(data) {
     posts = data;
   });
 
   Post = {
     all: posts,
-    create: function (post) {
+    create: function(post) {
       return posts.$add(post);
     },
-    get: function (postId) {
+    get: function(postId) {
       if (posts.length > 0) {
         var deferred = $q.defer();
         var post = posts.$getRecord(postId);
@@ -35,8 +34,4 @@ app.factory('Post', function ($firebaseArray, $firebaseObject, $q, FIREBASE_URL)
   };
 
   return Post;
-
-
-
-  //return Post;
 });

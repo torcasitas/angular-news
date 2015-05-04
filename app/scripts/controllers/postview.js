@@ -1,11 +1,9 @@
 'use strict';
 
-app.controller('PostViewCtrl', function ($scope, $routeParams, Post) {
-  var post = Post.get($routeParams.postId);
+app.controller('PostViewCtrl', function($scope, $routeParams, Post) {
+  var postPromise = Post.get($routeParams.postId);
 
-  post.then(function(obj) {
-    console.log('obj ' + obj);
-    console.dir(obj);
+  postPromise.then(function(post) {
+    $scope.post = post;
   });
-
 });
