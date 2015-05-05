@@ -12,7 +12,11 @@ app.factory('Post', function($firebaseArray, $firebaseObject, $q, FIREBASE_URL) 
   Post = {
     all: posts,
     create: function(post) {
-      return posts.$add(post);
+      return posts.$add(post).then(function(postRef) {
+        var postUserRef  = $firebaseObject(postsRef.child('user_posts').child(post.creatorUID));
+          postUserRef.$value = postRef.key();
+          return postUserRef.$save();
+      });
     },
     get: function(postId) {
       if (posts.length > 0) {
